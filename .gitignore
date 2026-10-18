@@ -1,0 +1,4 @@
+# Local playground and editor backups
+*.ini
+*.bak
+.DS_Store
