@@ -16,7 +16,8 @@ It presents the bot configuration as grouped, selectable pages instead of one lo
 - Dynamic sections preserve existing keys and allow adding/removing open-ended key/value rows.
 - Connection-specific fields adapt to `serial`, `ble`, or `tcp`.
 - Import a local `.ini` file and export the edited result as `config.ini`.
-- No framework, build step, server-side dependency, or external API is required.
+- Client-side validation checks boolean, integer, and numeric fields plus required serial/TCP connection values.
+- Export is blocked while validation errors remain; the upstream bot validator is still authoritative.
 
 ## Quick start
 
@@ -41,8 +42,10 @@ The editor loads `meshcore-config-schema.json` relative to the page, so use an H
 3. Select a navigation group and then a section.
 4. Edit the fields on that page.
 5. For dynamic sections, edit existing rows or use **+ Add key**.
-6. Choose **Download config.ini**.
-7. Validate the downloaded file with MeshCore Bot's own validation workflow before deploying it.
+6. Choose **Validate config** to run client-side checks.
+7. Fix any reported type or connection errors.
+8. Choose **Download config.ini** only after validation passes.
+9. Validate the downloaded file with MeshCore Bot's own validation workflow before deploying it.
 
 The included schema is an inventory generated from the upstream example configuration. It is intentionally separate from the bot runtime: updating the upstream bot does not automatically update this static editor. Regenerate or review the schema whenever the upstream configuration changes.
 
